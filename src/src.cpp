@@ -17,7 +17,7 @@ class Credit :public State
 public:
 
 	//idを再定義
-	virtual void id()
+	void id()
 	{
 		std::cout << "credit\n";
 
@@ -29,7 +29,7 @@ class Title :public State
 {
 public:
 
-	virtual void id()
+	void id()
 	{
 		std::cout << "title\n";
 
@@ -41,7 +41,7 @@ class Opening :public State
 {
 public:
 
-	virtual void id()
+	void id()
 	{
 		std::cout << "opening\n";
 
@@ -52,7 +52,7 @@ public:
 class Demo :public State
 {
 public:
-	virtual void id()
+	void id()
 	{
 		std::cout << "demo\n";
 
