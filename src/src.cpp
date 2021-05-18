@@ -6,7 +6,7 @@ class State
 public:
 
 	//仮想関数:派生クラスで再定義が出来る関数
-	virtual void id()
+	virtual void execute()
 	{
 	}
 };
@@ -17,7 +17,7 @@ class Credit :public State
 public:
 
 	//idを再定義
-	void id()
+	void execute()
 	{
 		std::cout << "credit\n";
 
@@ -29,7 +29,7 @@ class Title :public State
 {
 public:
 
-	void id()
+	void execute()
 	{
 		std::cout << "title\n";
 
@@ -41,7 +41,7 @@ class Opening :public State
 {
 public:
 
-	void id()
+	void execute()
 	{
 		std::cout << "opening\n";
 
@@ -52,7 +52,7 @@ public:
 class Demo :public State
 {
 public:
-	void id()
+	void execute()
 	{
 		std::cout << "demo\n";
 
@@ -60,28 +60,46 @@ public:
 	}
 };
 
+class Content
+{
+public:
+
+	void execute()
+	{
+		/*
+		それぞれのクラスのオブジェクトを作成させ、
+		その中にあるidという関数を呼び出す。
+		仮想関数を用いていることにより、
+		派生クラスで再定義が出来るので、
+		同じ関数名を使い、
+		クラスで名前を区別する。
+		*/
+
+		Credit credit;
+		Title title;
+		Opening opening;
+		Demo demo;
+
+		credit.execute();
+		title.execute();
+		opening.execute();
+		demo.execute();
+	}
+
+};
+
 int main()
 {
 	/*
-	それぞれのクラスのオブジェクトを作成させ、
-	その中にあるidという関数を呼び出す。
-	仮想関数を用いていることにより、
-	派生クラスで再定義が出来るので、
-	同じ関数名を使い、
-	クラスで名前を区別する。
+	Contentクラスでそれぞれの関数を呼び出して保管する。
+	保管したそのクラスの関数をさらに呼び出し、
+	main関数の中を簡易化させました。
 	whileの中は無限ループ(true)にしてあげる。
 	*/
-
-	Credit credit;
-	Title title;
-	Opening opening;
-	Demo demo;
+	Content content;
 
 	do
 	{
-		credit.id();
-		title.id();
-		opening.id();
-		demo.id();
+		content.execute();
 	} while (true);
 }
